@@ -1,0 +1,121 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GM : MonoBehaviour
+{
+
+    List<float> whichNote = new List<float>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 2};
+
+    public int noteMark = 0;
+
+    public Transform noteObj;
+
+    public string timerReset = "y";
+
+    public float xPos;
+
+    public float zPos;
+
+
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (timerReset == "y")
+        {
+            StartCoroutine(spawnNote());
+            timerReset = "n";
+        }
+
+
+    }
+
+    IEnumerator spawnNote()
+    {
+        yield return new WaitForSeconds(1);
+
+        if (whichNote[noteMark] == 1)
+        {
+            xPos = 0.012f;
+            zPos = -0.915f;
+        }
+
+        if (whichNote[noteMark] == 2)
+        {
+            xPos = 0.109f;
+            zPos = -0.915f;
+        }
+
+        if (whichNote[noteMark] == 3)
+        {
+            xPos = .124f;
+            zPos = -0.923f;
+        }
+
+        if (whichNote[noteMark] == 4)
+        {
+            xPos = 0.223f;
+            zPos = -1.183f;
+        }
+
+        if (whichNote[noteMark] == 5)
+        {
+            xPos = 0.149f;
+            zPos = -1.255f;
+        }
+
+        if (whichNote[noteMark] == 6)
+        {
+            xPos = 0.055f;
+            zPos = -1.327f;
+        }
+
+        if (whichNote[noteMark] == 7)
+        {
+            xPos = -0.143f;
+            zPos = -1.289f;
+            
+        }
+
+        if (whichNote[noteMark] == 8)
+        {
+            xPos = -0.198f;
+            zPos = -1.171f;
+
+        }
+
+        if (whichNote[noteMark] == 9)
+        {
+            
+            zPos = -1.18f;
+        }
+
+        if (whichNote[noteMark] == 10)
+        {
+            zPos = .7f;
+        }
+
+        if (whichNote[noteMark] == 11)
+        {
+            zPos = .7f;
+        }
+
+        if (whichNote[noteMark] == 12)
+        {
+            zPos = .7f;
+        }
+
+        noteMark += 1;
+        timerReset = "y";
+        Instantiate(noteObj, new Vector3(xPos, 1.0f, -0.80f), noteObj.rotation);
+
+
+    }
+}
